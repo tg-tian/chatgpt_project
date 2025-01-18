@@ -19,13 +19,10 @@ export function Auth() {
                 style={{width: 250}}
             />
             <div className={styles["auth-tips"]}>
-                扫码关注公众号【小傅哥】，
-                <a
-                    href="/qrcode.jpg"
-                    target="_blank"
-                >
-                    回复【403】获取访问密码
-                </a>
+                扫码关注公众号【叮咚鸡解答万物】，
+    
+                 回复【403】获取访问密码(123绕过验证)
+                
             </div>
 
             <Input
