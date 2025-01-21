@@ -95,8 +95,7 @@ public class AuthController {
         try {
             AuthStateEntity authStateEntity = authService.doLogin(code);
             log.info("鉴权登录校验完成，验证码: {} 结果: {}", code, JSON.toJSONString(authStateEntity));
-            // 拦截，鉴权失败
-            if (!AuthTypeVO.A0000.getCode().equals(authStateEntity.getCode())) {
+            if (!AuthTypeVO.A0000.getCode().equals(authStateEntity.getCode()) ) {
                 return Response.<String>builder()
                         .code(Constants.ResponseCode.TOKEN_ERROR.getCode())
                         .info(Constants.ResponseCode.TOKEN_ERROR.getInfo())
