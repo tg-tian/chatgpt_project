@@ -1,1 +1,1 @@
-docker build -f ./Dockerfile -t fuzhengwei/chatgpt-data-app:5.1 .
+docker build -f ./Dockerfile -t tgapk/chatgpt-data-app:v1 .
