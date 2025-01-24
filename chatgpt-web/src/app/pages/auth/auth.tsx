@@ -21,7 +21,7 @@ export function Auth() {
             <div className={styles["auth-tips"]}>
                 扫码关注公众号【叮咚鸡解答万物】，
     
-                 回复【403】获取访问密码(123绕过验证)
+                 回复【403】获取访问密码(1234绕过验证)
                 
             </div>
 
@@ -42,12 +42,10 @@ export function Auth() {
 
             <div className={styles["auth-actions"]}>
                 <Button type="primary" onClick={() => access.login()}>确认登录👣</Button>
-                <Button type="text"
-                        onClick={() => window.open('https://bugstack.cn/md/project/chatgpt/chatgpt.html')}>此项目地址</Button>
             </div>
             <hr></hr>
             <span>
-                说明：此平台以学习OpenAI项目开发的演示站点，不提供OpenAI在线服务。一且操作都为项目的验证，学习编程技术为主。
+                说明：此平台以学习OpenAI项目开发的演示站点，不提供OpenAI在线服务。一且操作都为项目的验证，个人学习为主。
             </span>
         </div>
     );
