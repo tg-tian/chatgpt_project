@@ -82,6 +82,13 @@
             <groupId>cn.bugstack</groupId>
             <artifactId>chatglm-sdk-java</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>cn.bugstack</groupId>
+            <artifactId>deepseek-sdk-java</artifactId>
+            <version>1.0</version>
+        </dependency>
+
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

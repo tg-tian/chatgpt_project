@@ -6,6 +6,7 @@ import cn.bugstack.chatgpt.data.domain.openai.model.entity.UserAccountQuotaEntit
 import cn.bugstack.chatgpt.data.domain.openai.model.valobj.LogicCheckTypeVO;
 import cn.bugstack.chatgpt.data.domain.openai.service.channel.impl.ChatGLMService;
 import cn.bugstack.chatgpt.data.domain.openai.service.channel.impl.ChatGPTService;
+import cn.bugstack.chatgpt.data.domain.openai.service.channel.impl.DeepSeekService;
 import cn.bugstack.chatgpt.data.domain.openai.service.rule.ILogicFilter;
 import cn.bugstack.chatgpt.data.domain.openai.service.rule.factory.DefaultLogicFactory;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,8 @@ public class ChatService extends AbstractChatService {
     @Resource
     private DefaultLogicFactory logicFactory;
 
-    public ChatService(ChatGPTService chatGPTService, ChatGLMService chatGLMService) {
-        super(chatGPTService, chatGLMService);
+    public ChatService(ChatGPTService chatGPTService, ChatGLMService chatGLMService, DeepSeekService deepSeekService) {
+        super(chatGPTService, chatGLMService,deepSeekService);
     }
 
     @Override

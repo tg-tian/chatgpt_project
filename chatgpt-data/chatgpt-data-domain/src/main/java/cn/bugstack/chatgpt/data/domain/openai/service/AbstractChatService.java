@@ -8,6 +8,7 @@ import cn.bugstack.chatgpt.data.domain.openai.repository.IOpenAiRepository;
 import cn.bugstack.chatgpt.data.domain.openai.service.channel.OpenAiGroupService;
 import cn.bugstack.chatgpt.data.domain.openai.service.channel.impl.ChatGLMService;
 import cn.bugstack.chatgpt.data.domain.openai.service.channel.impl.ChatGPTService;
+import cn.bugstack.chatgpt.data.domain.openai.service.channel.impl.DeepSeekService;
 import cn.bugstack.chatgpt.data.domain.openai.service.rule.factory.DefaultLogicFactory;
 import cn.bugstack.chatgpt.data.types.common.Constants;
 import cn.bugstack.chatgpt.data.types.enums.OpenAiChannel;
@@ -29,9 +30,10 @@ public abstract class AbstractChatService implements IChatService {
 
     private final Map<OpenAiChannel, OpenAiGroupService> openAiGroup = new HashMap<>();
 
-    public AbstractChatService(ChatGPTService chatGPTService, ChatGLMService chatGLMService) {
+    public AbstractChatService(ChatGPTService chatGPTService, ChatGLMService chatGLMService, DeepSeekService deepSeekService) {
         openAiGroup.put(OpenAiChannel.ChatGPT, chatGPTService);
         openAiGroup.put(OpenAiChannel.ChatGLM, chatGLMService);
+        openAiGroup.put(OpenAiChannel.DeepSeek, deepSeekService);
     }
 
     @Resource
