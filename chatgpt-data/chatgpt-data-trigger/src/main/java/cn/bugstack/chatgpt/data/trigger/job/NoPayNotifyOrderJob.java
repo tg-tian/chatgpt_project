@@ -44,7 +44,7 @@ public class NoPayNotifyOrderJob {
     public void exec() {
         try {
             if (null == payService) {
-                log.info("定时任务，订单支付状态更新。应用未配置支付渠道，任务不执行。");
+                //log.info("定时任务，订单支付状态更新。应用未配置支付渠道，任务不执行。");
                 return;
             }
             List<String> orderIds = orderService.queryNoPayNotifyOrder();

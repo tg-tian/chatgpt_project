@@ -19,7 +19,7 @@ public class DeepseekSDKConfig {
 
     @Bean(name = "deepseekOpenAiSession")
     @ConditionalOnProperty(value = "deepseek.sdk.config.enabled", havingValue = "true", matchIfMissing = false)
-    public OpenAiSession openAiSession(ChatGPTSDKConfigProperties properties) {
+    public OpenAiSession openAiSession(DeepseekSDKConfigProperties properties) {
         // 1. 配置文件
         cn.bugstack.deepseek.session.Configuration configuration = new cn.bugstack.deepseek.session.Configuration();
         configuration.setApiHost(properties.getApiHost());

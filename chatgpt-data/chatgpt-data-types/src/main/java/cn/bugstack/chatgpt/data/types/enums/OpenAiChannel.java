@@ -21,7 +21,7 @@ public enum OpenAiChannel {
     public static OpenAiChannel getChannel(String model) {
         if (model.toLowerCase().contains("gpt") || model.toLowerCase().contains("dall")) return OpenAiChannel.ChatGPT;
         if (model.toLowerCase().contains("glm")) return OpenAiChannel.ChatGLM;
-        if (model.toLowerCase().contains("deepSeek")) return OpenAiChannel.DeepSeek;
+        if (model.toLowerCase().contains("deepseek")) return OpenAiChannel.DeepSeek;
         return null;
     }
 
