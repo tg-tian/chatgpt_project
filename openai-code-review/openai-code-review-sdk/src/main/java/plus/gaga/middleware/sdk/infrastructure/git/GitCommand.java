@@ -76,7 +76,7 @@ public class GitCommand {
 
         // 创建分支
         String dateFolderName = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        File dateFolder = new File("repo/" + dateFolderName);
+        File dateFolder = new File("repo/codeReview/" + dateFolderName);
         if (!dateFolder.exists()) {
             dateFolder.mkdirs();
         }
@@ -88,13 +88,13 @@ public class GitCommand {
         }
 
         // 提交内容
-        git.add().addFilepattern(dateFolderName + "/" + fileName).call();
+        git.add().addFilepattern("codeReview/" + dateFolderName + "/" + fileName).call();
         git.commit().setMessage("add code review new file" + fileName).call();
         git.push().setCredentialsProvider(new UsernamePasswordCredentialsProvider(githubToken, "")).call();
 
         logger.info("openai-code-review git commit and push done! {}", fileName);
 
-        return githubReviewLogUri + "/blob/master/" + dateFolderName + "/" + fileName;
+        return githubReviewLogUri + "/blob/main/codeReview/" + dateFolderName + "/" + fileName;
     }
 
     public String getProject() {
