@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 18 # 使用 Node.js 18
           cache: 'npm'
-        working-directory: ./chatgpt-web
+        cache-dependency-path: ./chatgpt-web
 
       - name: Install dependencies
         run: npm install
@@ -44,4 +44,4 @@ jobs:
           platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            your-dockerhub-username/your-image-name:v1
+            tgapk/chatgpt-web-app:v1
