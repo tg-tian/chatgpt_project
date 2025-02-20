@@ -15,20 +15,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Change directory
-        run: cd chatgpt-web
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18 # 使用 Node.js 18
           cache: 'npm'
+        working-directory: ./chatgpt-web
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./chatgpt-web
 
       - name: Build the project
         run: npm run build
+        working-directory: ./chatgpt-web
 
       - name: Login to DockerHub
         uses: docker/login-action@v1
@@ -39,8 +39,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ./
-          file: ./Dockerfile
+          context: ./chatgpt-web
+          file: ./chatgpt-web/Dockerfile
           platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
