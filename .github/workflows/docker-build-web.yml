@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'codeReview/**'
 
 jobs:
   build:
@@ -13,19 +15,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Change directory
+        run: cd chatgpt-web
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18 # 使用 Node.js 18
-          cache: 'yarn' # 如果使用 yarn，缓存 yarn 依赖
+          cache: 'npm'
 
       - name: Install dependencies
-        run: |
-          yarn config set registry 'https://registry.npmmirror.com/'
-          yarn install --frozen-lockfile
+        run: npm install
 
       - name: Build the project
-        run: yarn build
+        run: npm run build
 
       - name: Login to DockerHub
         uses: docker/login-action@v1
@@ -36,8 +39,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ./chatgpt-web
-          file: ./chatgpt-web/Dockerfile
+          context: ./
+          file: ./Dockerfile
           platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
