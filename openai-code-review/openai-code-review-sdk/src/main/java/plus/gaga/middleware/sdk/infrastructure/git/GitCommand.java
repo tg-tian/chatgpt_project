@@ -81,7 +81,7 @@ public class GitCommand {
             dateFolder.mkdirs();
         }
 
-        String fileName = project + "-" + branch + "-" + author + System.currentTimeMillis() + "-" + RandomStringUtils.randomNumeric(4) + ".md";
+        String fileName = System.currentTimeMillis() + "-" + RandomStringUtils.randomNumeric(4) + ".md";
         File newFile = new File(dateFolder, fileName);
         try (FileWriter writer = new FileWriter(newFile)) {
             writer.write(recommend);
