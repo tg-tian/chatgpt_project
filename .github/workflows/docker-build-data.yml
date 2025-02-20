@@ -33,9 +33,6 @@ jobs:
       run: mvn clean install
       working-directory: ./deepseek-sdk-java
 
-    - name: Change directory
-      run: cd ../chatgpt-data
-
     - name: Build with Maven
       run: |
           mvn clean package -Dmaven.test.skip=true
