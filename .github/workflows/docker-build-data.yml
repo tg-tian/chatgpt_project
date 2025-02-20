@@ -30,6 +30,7 @@ jobs:
     - name: Build with Maven
       run: |
           mvn clean package -Dmaven.test.skip=true
+      working-directory: ./chatgpt-data/chatgpt-data-app 
 
     - name: Login to DockerHub
       uses: docker/login-action@v1 
