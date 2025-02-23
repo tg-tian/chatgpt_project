@@ -70,11 +70,11 @@ public class DeepSeekService implements OpenAiGroupService {
                     }
                     // 发送信息
                     try {
-//                        try {
-//                            Thread.sleep(300);
-//                        } catch (InterruptedException e) {
-//                            throw new RuntimeException(e);
-//                        }
+                        try {
+                            Thread.sleep(50);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
                         emitter.send(delta.getContent());
                     } catch (Exception e) {
                         throw new ChatGPTException(e.getMessage());
