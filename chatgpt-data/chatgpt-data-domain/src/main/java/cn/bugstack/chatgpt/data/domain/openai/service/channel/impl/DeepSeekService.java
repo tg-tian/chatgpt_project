@@ -19,6 +19,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter;
 
+import java.sql.Time;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 @Service
@@ -51,6 +53,7 @@ public class DeepSeekService implements OpenAiGroupService {
                 .model(chatProcess.getModel())
                 .build();
 
+
         // 3.2 请求应答
         deepseekOpenAiSession.chatCompletions(chatCompletion, new EventSourceListener() {
             @Override
@@ -60,16 +63,19 @@ public class DeepSeekService implements OpenAiGroupService {
                 for (ChatChoice chatChoice : choices) {
                     Message delta = chatChoice.getDelta();
                     if (Constants.Role.ASSISTANT.getCode().equals(delta.getRole())) continue;
-
                     // 应答完成
                     String finishReason = chatChoice.getFinishReason();
                     if (StringUtils.isNoneBlank(finishReason) && "stop".equals(finishReason)) {
                         emitter.complete();
                         break;
                     }
-
                     // 发送信息
                     try {
+                        try {
+                            Thread.sleep(50);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
                         emitter.send(delta.getContent());
                     } catch (Exception e) {
                         throw new ChatGPTException(e.getMessage());
