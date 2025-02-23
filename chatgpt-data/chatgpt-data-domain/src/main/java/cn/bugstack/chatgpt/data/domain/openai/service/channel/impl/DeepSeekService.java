@@ -72,7 +72,7 @@ public class DeepSeekService implements OpenAiGroupService {
                     // 发送信息
                     try {
                         try {
-                            Thread.sleep(50);
+                            Thread.sleep(300);
                         } catch (InterruptedException e) {
                             throw new RuntimeException(e);
                         }
