@@ -6,6 +6,8 @@ on:
       - main
     paths-ignore:
       - 'codeReview/**'
+    paths:
+      - 'chatgpt-data/**'
 
 jobs:
   build:
