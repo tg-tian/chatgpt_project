@@ -66,16 +66,15 @@ public class DeepSeekService implements OpenAiGroupService {
                     // 应答完成
                     String finishReason = chatChoice.getFinishReason();
                     if (StringUtils.isNoneBlank(finishReason) && "stop".equals(finishReason)) {
-                        emitter.complete();
-                        break;
+
                     }
                     // 发送信息
                     try {
-                        try {
-                            Thread.sleep(300);
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
+//                        try {
+//                            Thread.sleep(300);
+//                        } catch (InterruptedException e) {
+//                            throw new RuntimeException(e);
+//                        }
                         emitter.send(delta.getContent());
                     } catch (Exception e) {
                         throw new ChatGPTException(e.getMessage());
